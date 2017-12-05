@@ -3,25 +3,32 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 require "../../connect.php"; //databhash
 
-function if_valid($name, $passwd)
+function if_valid_log($name, $passwd)
 {
     global $DB;
 
     $query = $DB->prepare("SELECT passwd FROM `users` WHERE u_name=?");
     $query->execute(array($name));
     $passhash = $query->fetch();
+    $query = $DB->prepare("SELECT vhash FROM `users` WHERE u_name=?");
+    $query->execute(array($name));
+    $vhash = $query->fetch();
+//    var_dump($vhash);
+//    exit();
     if (!$passhash)
         return ("Nom d'utilisateur inexistant");
     else if (!password_verify($passwd, $passhash['passwd']))
         return ("Mot de passe incorrect");
+    else if ($vhash['vhash'])
+        return ("Compte non valide");
     return 'OK';
 }
 
-if (valid_hash($_GET['hash'], NULL)) {
-
-}
-if ($_POST['u_name'] && $_POST['passwd'] && $_POST['submit'] && ($error = if_valid($_POST['u_name'], $_POST['passwd'])) == 'OK') {
-    header("Location: ../../main.php");
+if ($_POST['u_name'] && $_POST['passwd'] && $_POST['submit'] &&
+    ($error = if_valid_log($_POST['u_name'], $_POST['passwd'])) == 'OK') {
+    logging($_POST['u_name']);
+    post_flash("Connecter avec succes");
+    header("Location: ../../navpage.php");
 } else {
     post_flash($error);
     header("Location: ../../login.php");

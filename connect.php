@@ -31,7 +31,7 @@ function valid_hash($hash, $passwd) {
 
     $query = $DB->prepare("SELECT vhash FROM `users` WHERE vhash=?");
     $query->execute(array($hash));
-    $res = $query->fetch()['vhash'];
+    $res = ($query->fetch())['vhash'];
     if ($res != $hash) {
         post_flash("Lien de validation invalide");
         return false;
@@ -40,9 +40,43 @@ function valid_hash($hash, $passwd) {
         $query = $DB->prepare("UPDATE `users` SET vhash = NULL, passwd=? WHERE vhash=?");
         $query->execute(array(password_hash($passwd, PASSWORD_BCRYPT), $hash));
     } else {
+        $query = $DB->prepare("SELECT `u_name` FROM `users` WHERE vhash=?");
+        $query->execute(array($hash));
+        $res = $query->fetch();
+//        var_dump($res);
+//        exit();
+        logging($res['name']);
         $query = $DB->prepare("UPDATE `users` SET vhash = NULL WHERE vhash=?");
         $query->execute(array($hash));
     }
     return true;
+}
+
+function logging($name){
+    global $DB;
+
+    $query = $DB->prepare("SELECT uid FROM `users` WHERE u_name=?");
+    $query->execute(array($name));
+    $res = $query->fetch();
+    $_SESSION['log'] = $res['uid'];
+}
+
+function if_valid($name, $email, $passwd, $DB) //for registration and update profil
+{
+    $query = $DB->prepare("SELECT u_name FROM `users` WHERE u_name=?");
+    $query->execute(array($name));
+    $errorname = $query->fetch();
+    $query = $DB->prepare("SELECT email FROM `users` WHERE email=?");
+    $query->execute(array($email));
+    $errormail = $query->fetch();
+    if (!preg_match("/^[A-Za-z0-9_]{1,15}$/", $name) || !filter_var($email, FILTER_VALIDATE_EMAIL) || ($passwd && !preg_match('/^.{6,}$/', $passwd)))
+        return "Incorrect input";
+    if ($errorname && $errormail)
+        return ("Nom d'utilisateur et Adresse email deja utiliser");
+    else if ($errorname)
+        return ("Nom d'utilisateur deja utiliser");
+    else if ($errormail)
+        return ("Adresse email deja utiliser");
+    return 'OK';
 }
 ?>

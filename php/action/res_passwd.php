@@ -26,7 +26,7 @@ else if ($_POST && $_POST['mail'] && $_POST['submit'] && ($error = if_valid($_PO
       <body style="background-color: whitesmoke;height: 220px;width: 160px;">
        <h2>Cliquez pour changer de mot de passe, camagru</h2>
        <a style="background-color: darkcyan; /* Green */border: none;color: white;margin: auto;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;"
-class="button" href="http://localhost:9090/hello/camagru/res_passwd.php?hash='.$random_hash.'">Changement de mot de passe</a>
+class="button" href="http://localhost:8080/hello/camagru/res_passwd.php?hash='.$random_hash.'">Changement de mot de passe</a>
       </body>
      </html>
      ', $headers);
