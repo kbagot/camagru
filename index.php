@@ -9,7 +9,7 @@
 <body>
 <div class="index">
     <header>
-        <button class="nav_b" onclick="window.location.href='/php/action/logout.php'">LOGOUT</button>
+        <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
     </header>
     <section>
         <form action="php/action/register.php" method="POST" autocomplete="on">

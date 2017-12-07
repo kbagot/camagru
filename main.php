@@ -7,20 +7,20 @@
 <body>
 <div class="main">
     <header>
-
     </header>
     <section>
-
     </section>
     <section>
-         PHOTO
+    <video id="video"></video>
+    <button id="startbutton">Prendre une photo</button>
+    <canvas id="canvas"></canvas>
+        <img id="photo" alt="photo">
     </section>
     <div>
-
     </div>
     <footer>
-
     </footer>
 </div>
+<script src="js/takepic.js"></script>
 </body>
 </html>

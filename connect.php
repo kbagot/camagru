@@ -31,7 +31,7 @@ function valid_hash($hash, $passwd) {
 
     $query = $DB->prepare("SELECT vhash FROM `users` WHERE vhash=?");
     $query->execute(array($hash));
-    $res = ($query->fetch())['vhash'];
+    $res = $query->fetch();
     if ($res != $hash) {
         post_flash("Lien de validation invalide");
         return false;
