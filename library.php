@@ -17,10 +17,10 @@
         require "connect.php"; //database conection
 
         $dos = scandir('uploads/');
+        $reverse = array_reverse($dos, true);
 //        var_dump ($dos);
-        foreach ($dos as $path) {
+        foreach ($reverse as $path) {
             $img = base64_encode(file_get_contents('uploads/' . $path));
-            $img = str_replace('dataimage/pngbase64', '', $img);
             echo '<img src="data:image/png;base64,' . $img . '">';
         }
             ?>

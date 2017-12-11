@@ -11,27 +11,51 @@ html, body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template: 15% 60% 12% / 1fr 1fr 15%;
+    grid-template: 15% 60% 1fr / 1fr 1fr 15%;
     grid-gap: 2vw;
     grid-template-areas: 'header header header'
                          'content content sidebar'
-                         'footer footer footer';
+
+                        'footer footer footer';
 }
 
 .index {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template: 15% 60% 12% / 1fr 1fr 15%;
+    grid-template: 15% 60% 1fr / 1fr 1fr 15%;
     grid-gap: 2vw;
     grid-template-areas: 'header header header'
     'content content content'
     'footer footer footer';
 }
 
+video{
+    width: 100%;
+    height: auto;
+}
+
 header {
     border: 1vw solid aqua;
     grid-area: header;
+}
+
+#imgfilter{
+    display: inline-flex;
+    width: 12%;
+    height: auto;
+}
+
+#filter{
+    position: absolute;
+}
+
+#startbutton{
+    visibility: hidden;
+}
+
+canvas{
+    position: absolute;
 }
 
 section {
