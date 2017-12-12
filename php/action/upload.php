@@ -18,11 +18,13 @@ if ($_POST && $_POST['img'] && $_POST['filtre']) {
     $img = str_replace('data:image/png;base64,', '', $img);
     $img = str_replace(' ', '+', $img);
     $img = base64_decode($img);
-    $file = UPLOAD_DIR . uniqid(). '.png';
-    file_put_contents($file, $img);
-    $dest = imagecreatefrompng($file);
+//    $file = UPLOAD_DIR . uniqid(). '.png';
+//    file_put_contents($file, $img);
+    $dest = imagecreatefromstring($img);
     $filter = imagecreatefrompng($_POST['filtre']);
-    imagecopy($dest, $filter,50,50,50,50,150,150);
+//    imagealphablending($dest, true);
+//    imagesavealpha($dest, true);
+    imagecopy($dest, $filter,imagesx($dest) / 2 - imagesx($filter) / 2, -10,0,0, imagesx($filter), imagesy($filter));
     imagepng($dest,  UPLOAD_DIR. uniqid() . '.png');
 }
 ?>

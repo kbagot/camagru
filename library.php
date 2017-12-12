@@ -18,17 +18,24 @@
 
         $dos = scandir('uploads/');
         $reverse = array_reverse($dos, true);
-//        var_dump ($dos);
+        //        var_dump ($dos);
         foreach ($reverse as $path) {
             $img = base64_encode(file_get_contents('uploads/' . $path));
-            echo '<img src="data:image/png;base64,' . $img . '">';
+            echo '<img id="libimg" src="data:image/png;base64,' . $img . '">';
         }
-            ?>
+        ?>
     </section>
     <div>
     </div>
     <footer>
     </footer>
 </div>
+<div id="displayimg">
+    <div>
+        <img id="showimg">
+    </div>
+    <button id="close"></button>
+</div>
+<script src="js/library.js"></script>
 </body>
 </html>

@@ -38,24 +38,27 @@
     video.addEventListener('canplay', function () {
         if (!streaming) {
             height = video.videoHeight / (video.videoWidth / width);
+            canvas.width = video.getBoundingClientRect().width;
+            canvas.height = video.getBoundingClientRect().height;
             streaming = true;
         }
     }, false);
 
+    video.onloadedmetadata = function () {
+
+        console.log(this.width + "x" + this.height);
+        console.log(this.videoWidth + "x" + this.videoHeight);
+    };
+
     function takepicture() {
-        canvas.height = height;
-        canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
         var data = canvas.toDataURL('image/png');
         var formData = new FormData();
         formData.append("img", data);
         formData.append("filtre", sfilter.src);
         var ajax = new XMLHttpRequest();
         ajax.open("POST", "php/action/upload.php", true);
-        // ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         ajax.send(formData);
-        // console.log(data);
-        // console.log(formData[img]);
-        // photo.setAttribute('src', data);
     }
 
     startbutton.addEventListener('click', function (ev) {
@@ -63,9 +66,20 @@
         ev.preventDefault();
     }, false);
 
+    video.onloadedmetadata = function () {
+
+        console.log(this.width + "x" + this.height);
+        console.log(this.videoWidth + "x" + this.videoHeight);
+    };
+
     window.onresize = function () {
         width = video.getBoundingClientRect().right / 3;
-        addfilter(lastcanvas);
+        canvas.width = video.getBoundingClientRect().width;
+        canvas.height = video.getBoundingClientRect().height;
+        video.videoHeight = video.getBoundingClientRect().videoHeight + 10;
+        // video.videoHeight = video.getBoundingClientRect().videoHeight + 10;
+        if (lastcanvas)
+            addfilter(lastcanvas);
     };
 
     function addfilter(ev) {
