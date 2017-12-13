@@ -18,10 +18,9 @@
 
         $dos = scandir('uploads/');
         $reverse = array_reverse($dos, true);
-        //        var_dump ($dos);
         foreach ($reverse as $path) {
-            $img = base64_encode(file_get_contents('uploads/' . $path));
-            echo '<img id="libimg" src="data:image/png;base64,' . $img . '">';
+//            $img = base64_encode(file_get_contents('uploads/' . $path));
+            echo '<img id="libimg" src="uploads/' . $path . '">';
         }
         ?>
     </section>
@@ -31,8 +30,16 @@
     </footer>
 </div>
 <div id="displayimg">
-    <div>
+    <div id="content">
         <img id="showimg">
+        <div id="showcomm">
+        </div>
+        <form action="" onsubmit="sendCom(event)">
+            <textarea autofocus name="comm" id="combox" maxlength="255">Commentaire ...</textarea>
+            <img id="like" src="http://www.opensticker.com/4636/sticker-symbole-like.jpg">
+            <button id="comm" type="submit">Publier</button>
+            <a id="nolog" href="login.php"></a>
+        </form>
     </div>
     <button id="close"></button>
 </div>

@@ -32,7 +32,8 @@ function valid_hash($hash, $passwd) {
     $query = $DB->prepare("SELECT vhash FROM `users` WHERE vhash=?");
     $query->execute(array($hash));
     $res = $query->fetch();
-    if ($res != $hash) {
+    if ($res['vhash'] != $hash) {
+
         post_flash("Lien de validation invalide");
         return false;
     }
@@ -43,9 +44,7 @@ function valid_hash($hash, $passwd) {
         $query = $DB->prepare("SELECT `u_name` FROM `users` WHERE vhash=?");
         $query->execute(array($hash));
         $res = $query->fetch();
-//        var_dump($res);
-//        exit();
-        logging($res['name']);
+        logging($res['u_name']);
         $query = $DB->prepare("UPDATE `users` SET vhash = NULL WHERE vhash=?");
         $query->execute(array($hash));
     }

@@ -6,4 +6,6 @@ require "../../connect.php"; //databhash
 if (valid_hash($_GET['hash'], NULL)) {
     post_flash("COMPTE VALIDER");
     header("Location: ../../navpage.php");
+    exit();
 }
+echo 'lol';

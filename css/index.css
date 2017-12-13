@@ -66,7 +66,41 @@ header {
 
 #close:before{
     content: '\00D7';
+}
 
+#like{
+    width: 5%;
+    position: absolute;
+    bottom: 6%;
+    right: 2%;
+}
+
+#combox{
+    border-width: 3px;
+    border-radius: 3px;
+    border-color: darkgrey;
+    border-style: solid;
+    height: 10%;
+    width: 23%;
+    resize: none;
+    right: 9%;
+    bottom: 6%;
+    position: absolute;
+}
+
+#comm {
+    border-width: 3px;
+    border-color: skyblue;
+    height: 3%;
+    width: 8%;
+    right: 24%;
+    bottom: 2%;
+    position: absolute;
+}
+
+#comm:hover{
+    background-color: skyblue;
+    color: white;
 }
 
 #displayimg{
@@ -80,6 +114,38 @@ header {
     background-color: rgba(25,10,22,0.21);
     /*width: 100%;*/
     /*height: 100%;*/
+}
+
+#showcomm{
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 75%;
+    margin: 2%;
+    position: absolute;
+    overflow: scroll;
+}
+
+#showimg{
+    top: 0;
+    left: 0;
+    width: 65%;
+    height: 75%;
+    margin: 2%;
+    position: absolute;
+}
+
+
+
+#content{
+    background-color: white;
+    top: 25%;
+    bottom: auto;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    position: fixed;
 }
 
 canvas{
