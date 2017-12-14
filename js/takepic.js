@@ -89,6 +89,7 @@
         // canvas.getContext('2d').drawImage(ev, 0, 0, width, height);
         sfilter.src = ev.src;
         startbutton.style.visibility = 'visible';
+
     }
 
     for (var i = 0; i < imgfilter.length; i++) {
