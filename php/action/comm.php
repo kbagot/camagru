@@ -21,12 +21,14 @@ function comm_mail($img)
     $query = $DB->prepare("SELECT `userid` FROM `img` WHERE `img_name`=?");
     $query->execute(array($img));
     $uid = $query->fetch();
-    $query = $DB->prepare("SELECT `email` FROM `users` WHERE `uid`=?");
+    $query = $DB->prepare("SELECT `email`, `notif` FROM `users` WHERE `uid`=?");
     $query->execute(array($uid['userid']));
-    $email = $query->fetch()['email'];
-    $headers = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    mail($email, "Camagru Nouveau commentaire", '
+    $ret = $query->fetch();
+    $email = $ret['email'];
+    if ($ret['notif'] == 'checked') {
+        $headers = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        mail($email, "Camagru Nouveau commentaire", '
      <html>
       <body style="background-color: whitesmoke;height: 220px;width: 160px;">
        <h2>Vous avez recu un nouveau Commentaire</h2>
@@ -35,6 +37,7 @@ class="button" href="http://localhost:8080/hello/camagru/library.php">Votre Bibl
       </body>
      </html>
      ', $headers);
+    }
 }
 
 function get_name($name)

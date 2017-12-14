@@ -10,7 +10,8 @@ if ($_POST && $_POST['img']) {
     $query = $DB->prepare("SELECT `u_name`, `comm` FROM `comm` WHERE `img_name`=?");
     $query->execute(array($img[1]));
     $res = $query->fetchAll();
-    echo json_encode($res);
-//    echo 'ok';
-} else
-    echo 'nolog';
+    if (isset($res[0]['comm']))
+        echo json_encode($res);
+    else
+      echo 'nocomm';
+}

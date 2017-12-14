@@ -16,13 +16,34 @@
         ini_set('display_errors', '1');
         require "connect.php"; //database conection
 
-        $dos = scandir('uploads/');
-        $reverse = array_reverse($dos, true);
-        foreach ($reverse as $path) {
+        $i = 0;
+        if (!$_GET)
+            $i = 0;
+        else if ($_GET['page'])
+            $i = $_GET['page'] * 9;
+        $reverse = scandir('uploads/', SCANDIR_SORT_DESCENDING);
+        for ($index = $i; $index < $i + 9; $index++) {
 //            $img = base64_encode(file_get_contents('uploads/' . $path));
-            echo '<img id="libimg" src="uploads/' . $path . '">';
+            if (isset($reverse[$index + 2]))
+                echo '<img id="libimg" src="uploads/' . $reverse[$index] . '">';
         }
         ?>
+        <div class="pagination">
+            <?php
+            $count = count($reverse) - 2;
+            for ($i = 0; $i < ($count / 9) ; $i++) {
+                echo '<a href="library.php?page=' . $i . '">' . ($i + 1) . '</a>';
+            }
+            //                        <a href="#">&laquo;</a>
+            //            <a href="#">1</a>
+            //            <a href="#" class="active">2</a>
+            //            <a href="#">3</a>
+            //            <a href="#">4</a>
+            //            <a href="#">5</a>
+            //            <a href="#">6</a>
+            //            <a href="#">&raquo;</a>
+            ?>
+        </div>
     </section>
     <div>
     </div>
@@ -36,7 +57,7 @@
         </div>
         <form action="" onsubmit="sendCom(event)">
             <textarea autofocus name="comm" id="combox" maxlength="255">Commentaire ...</textarea>
-            <img id="like" src="http://www.opensticker.com/4636/sticker-symbole-like.jpg">
+            <img id="like" src="logo/like.png">
             <button id="comm" type="submit">Publier</button>
             <a id="nolog" href="login.php"></a>
         </form>

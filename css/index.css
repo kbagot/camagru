@@ -60,11 +60,22 @@ header {
 
 #close {
     position: absolute;
+    margin: 2%;
     top: 0;
     right:0;
+    border-width: 3px;
+    border-color: #2B8080;
+    height: 6%;
+    width: 6%;
+}
+
+#close:hover{
+    background-color: #2B8080;
+    color: white;
 }
 
 #close:before{
+    /*font-size: 5;*/
     content: '\00D7';
 }
 
@@ -90,7 +101,6 @@ header {
 
 #comm {
     border-width: 3px;
-    border-color: skyblue;
     height: 3%;
     width: 8%;
     right: 24%;
@@ -99,7 +109,7 @@ header {
 }
 
 #comm:hover{
-    background-color: skyblue;
+    background-color: #2B8080;
     color: white;
 }
 
@@ -123,7 +133,14 @@ header {
     height: 75%;
     margin: 2%;
     position: absolute;
-    overflow: scroll;
+    /*overflow: scroll;*/
+    /*overflow-x: hidden;*/
+}
+
+#commtext {
+    display: block;
+    margin: 1%;
+    word-wrap: break-word;
 }
 
 #showimg{
