@@ -10,11 +10,11 @@
     </header>
     <section>
         <canvas id="canvas"></canvas>
-        <img id="filter">
+<!--        <img id="filter">-->
         <video id="video"></video>
         <button id="startbutton">Upload</button>
     </section>
-    <div>
+    <div id="capic">
     </div>
     <footer>
         <?php

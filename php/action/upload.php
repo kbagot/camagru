@@ -30,16 +30,14 @@ if ($_POST && $_POST['img'] && $_POST['filtre']) {
 //    file_put_contents($file, $img);
     $dest = imagecreatefromstring($img);
     $filter = imagecreatefrompng($_POST['filtre']);
+//    imagecopyresampled($filter, $filter, 0, 0, 0, 0,
+//        imagesx($filter) - (640 - imagesx($dest)), imagesy($filter) - (480 - imagesy($dest)), imagesx($filter), imagesy($filter));
 //    imagealphablending($dest, true);
 //    imagesavealpha($dest, true);
     imagecopy($dest, $filter, imagesx($dest) / 2 - imagesx($filter) / 2, -10, 0, 0, imagesx($filter), imagesy($filter));
     $file = UPLOAD_DIR . uniqid(). '.png';
     imagepng($dest, $file);
     add_img(str_replace(UPLOAD_DIR, '', $file));
+    echo (str_replace(UPLOAD_DIR, 'uploads/', $file));
 }
 ?>
-
-<!--$data = base64_decode($img);-->
-<!--$file = UPLOAD_DIR . uniqid(). '.png';-->
-<!--$success = file_put_contents($file, $data);-->
-<!--print $success ? $file : 'Unable to save the file.';-->
