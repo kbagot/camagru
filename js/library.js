@@ -3,28 +3,51 @@ var libimg = document.querySelectorAll('#libimg'),
     close = document.querySelector('#close'),
     like = document.querySelector('#like'),
     comm = document.querySelector('#comm'),
+    delimg = document.querySelector('#delimg'),
     clicimg = document.getElementById('showimg');
 
 close.addEventListener('click', function () {
     displayimg.style.visibility = 'hidden';
 }, false);
 
-like.addEventListener('click', function () {
-    var formData = new FormData();
-    formData.append('img', clicimg.src);
-    var ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = function () {
-        if (ajax.responseText === 'nolog') {
-            like.style.visibility = 'hidden';
-            comm.style.visibility = 'hidden';
-            document.querySelector('#nolog').innerHTML = "Connectez-vous";
-        }
-        like.src = 'logo/liked.png';
-        console.log(ajax.responseText);
-    };
-    ajax.open("POST", "php/action/like.php", true);
-    ajax.send(formData);
-}, false);
+if (like) {
+    like.addEventListener('click', function () {
+        var formData = new FormData();
+        formData.append('img', clicimg.src);
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200 && ajax.responseText === 'nolog') {
+                like.style.visibility = 'hidden';
+                comm.style.visibility = 'hidden';
+                document.querySelector('#nolog').innerHTML = "Connectez-vous";
+            }
+            like.src = 'logo/liked.png';
+            // console.log(ajax.responseText);
+        };
+        ajax.open("POST", "php/action/like.php", true);
+        ajax.send(formData);
+    }, false);
+}
+
+if (delimg) {
+    delimg.addEventListener('click', function () {
+            var formData = new FormData();
+            formData.append('img', clicimg.src);
+            var ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+                    if (libimg.length === 1 && location.search[6] > 0)
+                        location.search = '?page=' + (location.search[6] - 1);
+                    else
+                        location.reload();
+                }
+                // console.log(ajax.responseText);
+            };
+            ajax.open("POST", "php/action/delimg.php", true);
+            ajax.send(formData);
+        }, false
+    );
+}
 
 function display_comm(img) {
     var formData = new FormData();

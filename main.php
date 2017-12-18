@@ -13,6 +13,7 @@
 <!--        <img id="filter">-->
         <video id="video"></video>
         <button id="startbutton">Upload</button>
+        <input id="file" type="file" />
     </section>
     <div id="capic">
     </div>
