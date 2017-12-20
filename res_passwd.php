@@ -1,4 +1,7 @@
-<?php require('connect.php'); ?>
+<?php require('connect.php');
+if ($_SESSION['log'])
+    header("Location: index.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,12 +12,13 @@
 <body>
 <div class="index">
     <header>
+        <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
     </header>
     <section>
         <form action="php/action/res_passwd.php?hash=<?=$_GET['hash']?>" method="POST" autocomplete="on">
             <?php if ($_GET['hash']) { ?>
                 <h1>Nouveau Mot de passe</h1>
-                <input type="password" name="passwd" required>
+                <input type="password" name="passwd" pattern="^.{6,}$" required>
             <?php } else { ?>
                 <h1>Mail</h1>
                 <input type="email" name="mail" required>

@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 require "../../connect.php"; //database conection
 
-function if_valid($mail)
+function if_validmail($mail)
 {
     global $DB;
 
@@ -16,7 +16,7 @@ function if_valid($mail)
 
 if ($_GET && $_GET['hash'] && $val = valid_hash($_GET['hash'], $_POST['passwd']))
        header("Location: ../../login.php");
-else if ($_POST && $_POST['mail'] && $_POST['submit'] && ($error = if_valid($_POST['mail'])) == 'OK') {
+else if ($_POST && $_POST['mail'] && $_POST['submit'] && ($error = if_validmail($_POST['mail'])) == 'OK') {
     $query = $DB->prepare("UPDATE `users` SET vhash=? WHERE email=?");
     $query->execute(array(($random_hash = md5(uniqid(rand(), true))), $_POST['mail']));
     $headers = 'MIME-Version: 1.0' . "\r\n";

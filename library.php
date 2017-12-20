@@ -7,15 +7,17 @@
 <body>
 <div class="main">
     <header>
+        <?php require('connect.php');
+        error_reporting(E_ALL);
+        ini_set('display_errors', '1');
+        if ($_SESSION['log']) { ?>
+            <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
+        <?php } ?>
     </header>
     <section>
     </section>
     <section>
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors', '1');
-        require "connect.php"; //database conection
-
         $i = 0;
         if (!$_GET)
             $i = 0;
@@ -31,7 +33,7 @@
         <div class="pagination">
             <?php
             $count = count($reverse) - 2;
-            for ($i = 0; $i < ($count / 9) ; $i++) {
+            for ($i = 0; $i < ($count / 9); $i++) {
                 echo '<a href="library.php?page=' . $i . '">' . ($i + 1) . '</a>';
             }
             //           <a href="#">&laquo;</a>

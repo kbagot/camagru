@@ -1,4 +1,7 @@
-<?php require('connect.php'); ?>
+<?php require('connect.php');
+if ($_SESSION['log'])
+    header("Location: library.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +12,6 @@
 <body>
 <div class="index">
     <header>
-        <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
     </header>
     <section>
         <form action="php/action/register.php" method="POST" autocomplete="on">

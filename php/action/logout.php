@@ -4,4 +4,5 @@ ini_set('display_errors', '1');
 require "../../connect.php"; //databhash/
 
 $_SESSION = array();
-header("Location: ../../index.php");
+post_flash("Au revoir");
+header("Location: ../../navpage.php");

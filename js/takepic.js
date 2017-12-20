@@ -46,6 +46,7 @@
     }, false);
 
     function takepicture(base) {
+        console.log(base);
         startbutton.style.visibility = 'hidden';
         fileinput.style.visibility = 'hidden';
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
@@ -74,19 +75,27 @@
     }, false);
 
     fileinput.addEventListener('change', function () {
-        var reader = new FileReader();
-        // if (reader.readyState === 2){
-        // console.log(fileinput);
-        reader.addEventListener('load', function () {
-            // console.log(reader.result);
-            var lolilol = new Image();
-            lolilol.onload = function () {
-                takepicture(lolilol);
-                // canvas.getContext('2d').drawImage(lolilol, 0, 0, canvas.width, canvas.height);
-            };
-            lolilol.src = reader.result;
-        }, false);
-        reader.readAsDataURL(fileinput.files[0]);
+        if (fileinput.files[0]) {
+            var extension = fileinput.files[0].name.split('.').pop().toLowerCase();
+            if (fileinput.files[0].size < 10000000 && extension === 'png') {
+                // console.log("name " + fileinput.name);
+                var reader = new FileReader();
+                // if (reader.readyState === 2){
+                // console.log(fileinput);        /
+                reader.addEventListener('load', function () {
+                    // console.log(reader.result);
+                    var lolilol = new Image();
+                    lolilol.onload = function () {
+                        takepicture(lolilol);
+                        // canvas.getContext('2d').drawImage(lolilol, 0, 0, canvas.width, canvas.height);
+                    };
+                    lolilol.src = reader.result;
+                }, false);
+                reader.readAsDataURL(fileinput.files[0]);
+            }
+            else
+                alert('Fichier de type `png` et inferieur a 10 MO');
+        }
     }, false);
 
     window.onresize = function () {

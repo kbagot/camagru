@@ -1,3 +1,9 @@
+<?php require('connect.php');
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+if (!$_SESSION['log'])
+    header("Location: index.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,10 +18,6 @@
     </section>
     <section>
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors', '1');
-        require "connect.php"; //database conection
-
         $i = 0;
         if (!$_GET || !isset($_GET['page']) || !is_numeric($_GET['page']))
             $i = 0;

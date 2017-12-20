@@ -17,4 +17,4 @@
 </div>
 </body>
 </html>
-<?php header( "Refresh:5; url=main.php", true, 303);?>
+<?php header( "Refresh:2; url=index.php", true, 303);?>

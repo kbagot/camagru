@@ -1,6 +1,6 @@
 <?php require('connect.php');
 if (!$_SESSION['log']) {
-//    header('Location: index.php');
+    header('Location: index.php');
 }
 else{
     $query = $DB->prepare("SELECT `u_name`, `email`, `passwd`, `vhash`, `notif` FROM `users` WHERE uid=?");
@@ -13,11 +13,12 @@ else{
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <link rel="stylesheet" href="css/index.css">
-    <title>Index</title>
+    <title>Modify User</title>
 </head>
 <body>
 <div class="index">
     <header>
+        <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
     </header>
     <section>
         <form action="php/action/modify_user.php" method="POST" autocomplete="on">
@@ -29,7 +30,7 @@ else{
             <input type="password" name="passwd" pattern="^.{6,}$">
             <input type="checkbox" name="notif" <?=$u_data['notif']?> value="checked">
             <input type="submit" name="submit" value="Modify"/>
-<!--            <p>--><?= var_dump($u_data);var_dump($_SESSION);//= get_flash() ?><!--</p>-->
+            <p><?= get_flash() ?></p>
         </form>
     </section>
     <footer>

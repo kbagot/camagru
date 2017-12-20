@@ -1,3 +1,10 @@
+<?php
+require "connect.php"; //database conection
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+if (!$_SESSION['log'])
+    header("Location: index.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,21 +14,19 @@
 <body>
 <div class="main">
     <header>
+        <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
     </header>
     <section>
         <canvas id="canvas"></canvas>
 <!--        <img id="filter">-->
         <video id="video"></video>
         <button id="startbutton">Upload</button>
-        <input id="file" type="file" />
+        <input id="file" type="file" accept="image/*"/>
     </section>
     <div id="capic">
     </div>
     <footer>
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors', '1');
-        require "connect.php"; //database conection
 
         $filter = scandir('filter/');
         $filter = array_diff($filter, array('.', '..'));
