@@ -4,7 +4,7 @@ ini_set('display_errors', '1');
 require "../../connect.php";
 
 if ($_POST && $_POST['img']) {
-    $img = $_POST['img'];
+    $img = htmlspecialchars($_POST['img']);
     $img = str_replace('/', '', $img);
     $img = preg_split('/uploads/', $img);
     $query = $DB->prepare("SELECT `u_name`, `comm` FROM `comm` WHERE `img_name`=?");

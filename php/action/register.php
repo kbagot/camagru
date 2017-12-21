@@ -20,6 +20,8 @@ class="button" href="http://localhost:8080/hello/camagru/php/action/validate.php
 
 if ($_POST['u_name'] && $_POST['mail'] && $_POST['passwd'] && $_POST['submit'] &&
     ($error = if_valid($_POST['u_name'], $_POST['mail'], $_POST['passwd'], $DB)) == 'OK') {
+    $_POST['u_name'] = htmlspecialchars($_POST['u_name']);
+    $_POST['mail'] = htmlspecialchars($_POST['mail']);
     $query = $DB->prepare("INSERT INTO `users` (`u_name`, `email`, `passwd`, `vhash`, `notif`) VALUES (?, ?, ?, ?, ?)");
     $query->execute(array($_POST['u_name'], $_POST['mail'], password_hash($_POST['passwd'], PASSWORD_BCRYPT),
         ($random_hash = md5(uniqid(rand(), true))), 'checked'));

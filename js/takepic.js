@@ -67,6 +67,7 @@
         ajax.open("POST", "php/action/upload.php", true);
         ajax.send(formData);
         canvas.getContext('2d').drawImage(filter, canvas.width / 2 - filter.width / 2, -10, filter.width, filter.height);
+
     }
 
     startbutton.addEventListener('click', function (ev) {
@@ -109,10 +110,14 @@
 
     function addfilter(ev) {
         filter.src = ev.src;
-        filter.width -= 640 - video.getBoundingClientRect().width;
-        filter.height -= 480 - video.getBoundingClientRect().height;
+
+        filter.width = 250 - (250 * ((640 - video.getBoundingClientRect().width) / 640));
+        filter.height = 250 - (250 * ((480 - video.getBoundingClientRect().height) / 480));
+        // console.log(640 - video.getBoundingClientRect().width);
+        console.log(filter.width);
+        console.log(filter.height);
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-        canvas.getContext('2d').drawImage(filter, canvas.width / 2 - filter.width / 2, -10, filter.width, filter.height);
+        canvas.getContext('2d').drawImage(filter, (canvas.width / 2) - (filter.width / 2), -10, filter.width, filter.height);
         startbutton.style.visibility = 'visible';
         fileinput.style.visibility = 'visible';
     }

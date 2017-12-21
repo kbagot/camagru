@@ -17,9 +17,11 @@ if (!$_SESSION['log'])
         <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
     </header>
     <section>
-        <canvas id="canvas"></canvas>
-<!--        <img id="filter">-->
-        <video id="video"></video>
+        <!--<img id="filter">-->
+        <div id="mountcontent">
+            <canvas id="canvas"></canvas>
+            <video id="video"></video>
+        </div>
         <button id="startbutton">Upload</button>
         <input id="file" type="file" accept="image/*"/>
     </section>

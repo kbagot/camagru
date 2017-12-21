@@ -10,6 +10,30 @@ close.addEventListener('click', function () {
     displayimg.style.visibility = 'hidden';
 }, false);
 
+
+if (window.innerWidth < 700) {
+    libimg.forEach(function (el) {
+        el.style.marginTop = '10%';
+    });
+}
+else {
+    libimg.forEach(function (el) {
+        el.style.marginTop = '0';
+    });
+}
+
+window.onresize = function () {
+    if (window.innerWidth < 700) {
+        libimg.forEach(function (el) {
+            el.style.marginTop = '10%';
+        })
+    } else {
+        libimg.forEach(function (el) {
+            el.style.marginTop = '0';
+        })
+    }
+};
+
 if (like) {
     like.addEventListener('click', function () {
         var formData = new FormData();

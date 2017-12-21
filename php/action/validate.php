@@ -8,4 +8,3 @@ if (valid_hash($_GET['hash'], NULL)) {
     header("Location: ../../navpage.php");
     exit();
 }
-echo 'lol';

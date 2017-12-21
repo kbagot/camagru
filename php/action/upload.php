@@ -27,14 +27,12 @@ if ($_POST && $_POST['img'] && $_POST['filtre']) {
     $img = str_replace('data:image/png;base64,', '', $img);
     $img = str_replace(' ', '+', $img);
     $img = base64_decode($img);
-//    file_put_contents($file, $img);
     $dest = imagecreatefromstring($img);
     $filter = imagecreatefrompng($_POST['filtre']);
-//    imagecopyresampled($filter, $filter, 0, 0, 0, 0,
-//        imagesx($filter) - (640 - imagesx($dest)), imagesy($filter) - (480 - imagesy($dest)), imagesx($filter), imagesy($filter));
-//    imagealphablending($dest, true);
-//    imagesavealpha($dest, true);
-    imagecopy($dest, $filter, imagesx($dest) / 2 - imagesx($filter) / 2, -10, 0, 0, imagesx($filter), imagesy($filter));
+    $newfxsize = 250 - (250 * ((640 - imagesx($dest)) / 640));
+    $newfysize = 250 - (250 * ((480 - imagesy($dest)) / 480));
+    imagecopyresampled($dest, $filter, imagesx($dest) / 2 - $newfxsize / 2, -10, 0, 0,
+        $newfxsize, $newfysize, imagesx($filter), imagesy($filter));
     $file = UPLOAD_DIR . uniqid(). '.png';
     imagepng($dest, $file);
     add_img(str_replace(UPLOAD_DIR, '', $file));

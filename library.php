@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<div class="main">
+<div class="index">
     <header>
         <?php require('connect.php');
         error_reporting(E_ALL);
@@ -15,41 +15,32 @@
         <?php } ?>
     </header>
     <section>
-    </section>
-    <section>
-        <?php
-        $i = 0;
-        if (!$_GET)
-            $i = 0;
-        else if ($_GET['page'])
-            $i = $_GET['page'] * 9;
-        $reverse = scandir('uploads/', SCANDIR_SORT_DESCENDING);
-        for ($index = $i; $index < $i + 9; $index++) {
-//            $img = base64_encode(file_get_contents('uploads/' . $path));
-            if (isset($reverse[$index + 2]))
-                echo '<img id="libimg" src="uploads/' . $reverse[$index] . '">';
-        }
-        ?>
-        <div class="pagination">
+        <div id="libimgcont">
             <?php
-            $count = count($reverse) - 2;
-            for ($i = 0; $i < ($count / 9); $i++) {
-                echo '<a href="library.php?page=' . $i . '">' . ($i + 1) . '</a>';
+            if (!$_GET || !isset($_GET['page']) || !is_numeric($_GET['page']))
+                $i = 0;
+            else
+                $i = $_GET['page'] * 9;
+            $reverse = scandir('uploads/', SCANDIR_SORT_DESCENDING);
+            for ($index = $i; $index < $i + 9; $index++) {
+                if (isset($reverse[$index + 2]))
+                    echo '<img id="libimg" src="uploads/' . $reverse[$index] . '">';
             }
-            //           <a href="#">&laquo;</a>
-            //           <a href="#">1</a>
-            //           <a href="#" class="active">2</a>
-            //           <a href="#">3</a>
-            //           <a href="#">4</a>
-            //           <a href="#">5</a>
-            //           <a href="#">6</a>
-            //           <a href="#">&raquo;</a>
             ?>
         </div>
     </section>
-    <div>
-    </div>
     <footer>
+        <div class="pagination">
+            <?php
+            $count = count($reverse) - 2;
+            for ($index = 0; $index < ($count / 9); $index++) {
+                echo '<a href="library.php?page=' . $index . '"';
+                if ($i / 9 == $index)
+                    echo ' class="active"';
+                echo '>' . ($index + 1) . '</a>';
+            }
+            ?>
+        </div>
     </footer>
 </div>
 <div id="displayimg">

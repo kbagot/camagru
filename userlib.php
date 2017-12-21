@@ -11,14 +11,15 @@ if (!$_SESSION['log'])
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<div class="main">
+<div class="index">
     <header>
+        <?php if ($_SESSION['log']) { ?>
+        <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
+        <?php } ?>
     </header>
     <section>
-    </section>
-    <section>
+        <div id="libimgcont">
         <?php
-        $i = 0;
         if (!$_GET || !isset($_GET['page']) || !is_numeric($_GET['page']))
             $i = 0;
         else
@@ -26,33 +27,25 @@ if (!$_SESSION['log'])
         $query = $DB->prepare("SELECT `img_name` FROM `img` WHERE `userid`=?");
         $query->execute(array($_SESSION['log']));
         $res = $query->fetchAll();
-//        $reverse = scandir('uploads/', SCANDIR_SORT_DESCENDING);
         for ($index = $i; $index < $i + 9; $index++) {
-//            $img = base64_encode(file_get_contents('uploads/' . $path));
             if (isset($res[$index]['img_name']))
                 echo '<img id="libimg" src="uploads/' . $res[$index]['img_name'] . '">';
         }
         ?>
-<div class="pagination">
-    <?php
-    $count = count($res);
-    for ($i = 0; $i < ($count / 9) ; $i++) {
-        echo '<a href="userlib.php?page=' . $i . '">' . ($i + 1) . '</a>';
-    }
-    //   <a href="#">&laquo;</a>
-    //   <a href="#">1</a>
-    //   <a href="#" class="active">2</a>
-    //   <a href="#">3</a>
-    //   <a href="#">4</a>
-    //   <a href="#">5</a>
-    //   <a href="#">6</a>
-    //   <a href="#">&raquo;</a>
-    ?>
-</div>
+        </div>
 </section>
-<div>
-</div>
 <footer>
+    <div class="pagination">
+        <?php
+        $count = count($res);
+        for ($index = 0; $index < ($count / 9) ; $index++) {
+            echo '<a href="userlib.php?page=' . $index . '"';
+            if ($i / 9 == $index)
+                echo ' class="active"';
+            echo '>' . ($index + 1) . '</a>';
+        }
+        ?>
+    </div>
 </footer>
 </div>
 <div id="displayimg">

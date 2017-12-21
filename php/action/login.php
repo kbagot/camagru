@@ -24,9 +24,9 @@ function if_valid_log($name, $passwd)
     return 'OK';
 }
 
-if ($_POST['u_name'] && $_POST['passwd'] && $_POST['submit'] &&
-    ($error = if_valid_log($_POST['u_name'], $_POST['passwd'])) == 'OK') {
-    logging($_POST['u_name']);
+if (isset($_POST['u_name']) && isset($_POST['passwd']) && isset($_POST['submit']) &&
+    ($error = if_valid_log(htmlspecialchars($_POST['u_name']), htmlspecialchars($_POST['passwd']))) == 'OK') {
+    logging(htmlspecialchars($_POST['u_name']));
     post_flash("Connecter avec succes");
     header("Location: ../../navpage.php");
 } else {

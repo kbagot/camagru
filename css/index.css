@@ -1,4 +1,5 @@
 html, body {
+    width: 100%;
     height: 100%;
     margin: 0;
 }
@@ -13,54 +14,99 @@ html, body {
     display: grid;
     grid-template: 15% 60% 1fr / 1fr 1fr 15%;
     grid-gap: 2vw;
-    grid-template-areas: 'header header header'
-                         'content content sidebar'
-
-                        'footer footer footer';
+    grid-template-areas: 'header header header' 'content content sidebar' 'footer footer footer';
 }
 
 .index {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template: 15% 60% 1fr / 1fr 1fr 15%;
+    grid-template: 15% 1fr 10% / 1fr 1fr 1fr;
     grid-gap: 2vw;
-    grid-template-areas: 'header header header'
-    'content content content'
-    'footer footer footer';
+    grid-template-areas: 'header header header' 'content content content' 'footer footer footer';
 }
 
-video{
+#mountcontent {
+    text-align: center;
+    /*display: block;*/
+    /*margin: auto;*/
+}
+
+video {
+    max-width: 100%;
+}
+
+canvas {
+    position: absolute;
     max-width: 100%;
 }
 
 header {
-    border: 1vw solid aqua;
+    box-shadow: 0 0 5px 3px #075661;
+    background-color: #075661;
+    border: 1px solid #075661;
     grid-area: header;
 }
 
-#libimg{
-    margin: 2%;
-    width: 300px;
-    height: 200px;
+#libimgcont {
+    max-width: 1599px;
+    width: 100%;
+    /*width: 100%;*/
+    text-align: center;
+    height: 100%;
 }
 
-#imgfilter{
+#libimg {
+    position: relative;
+    box-shadow: 0 0 3px 3px black;
     display: inline-flex;
-    /*visibility: hidden;*/
+    max-width: 400px;
+    max-height: 280px;
+    width: 33.3333333%;
+}
+
+#imgfilter {
+    display: inline-flex;
     width: 10%;
     height: auto;
 }
 
-#filter{
+.pagination {
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+}
+
+.pagination a {
+    margin-top: 3vh;
+    display: inline-flex;
+    background-color: white;
+    font-size: 2vw;
+    color: black;
+    border: 1px solid black;
+    padding: 1%;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #075661;
+}
+
+.pagination a.active {
+    color: white;
+    background-color: #075661;
+}
+
+#filter {
     position: absolute;
 }
 
-#startbutton{
+#startbutton {
     visibility: hidden;
 }
 
-#file{
+#file {
     visibility: hidden;
 }
 
@@ -68,31 +114,31 @@ header {
     position: absolute;
     margin: 2%;
     top: 0;
-    right:0;
+    right: 0;
     border-width: 3px;
     border-color: #2B8080;
     height: 6%;
     width: 6%;
 }
 
-#close:hover{
+#close:hover {
     background-color: #2B8080;
     color: white;
 }
 
-#close:before{
+#close:before {
     /*font-size: 5;*/
     content: '\00D7';
 }
 
-#like, #delimg{
+#like, #delimg {
     width: 5%;
     position: absolute;
     bottom: 6%;
     right: 2%;
 }
 
-#combox{
+#combox {
     border-width: 3px;
     border-radius: 3px;
     border-color: darkgrey;
@@ -114,12 +160,12 @@ header {
     position: absolute;
 }
 
-#comm:hover{
+#comm:hover {
     background-color: #2B8080;
     color: white;
 }
 
-#displayimg{
+#displayimg {
     /*right*/
     top: 0;
     bottom: 0;
@@ -127,12 +173,12 @@ header {
     left: 0;
     position: fixed;
     visibility: hidden;
-    background-color: rgba(25,10,22,0.5);
+    background-color: rgba(25, 10, 22, 0.5);
     /*width: 100%;*/
     /*height: 100%;*/
 }
 
-#showcomm{
+#showcomm {
     top: 0;
     right: 0;
     width: 30%;
@@ -149,7 +195,7 @@ header {
     word-wrap: break-word;
 }
 
-#showimg{
+#showimg {
     top: 0;
     left: 0;
     width: 65%;
@@ -158,9 +204,7 @@ header {
     position: absolute;
 }
 
-
-
-#content{
+#content {
     background-color: white;
     top: 25%;
     bottom: auto;
@@ -171,12 +215,7 @@ header {
     position: fixed;
 }
 
-canvas{
-    position: absolute;
-    max-width: 100%;
-}
-
-#capic{
+#capic {
     border: 1vw solid rebeccapurple;
     grid-area: sidebar;
     position: relative;
@@ -185,17 +224,17 @@ canvas{
     overflow-x: hidden;
 }
 
-#capic div{
+#capic div {
     position: relative;
 }
 
-#capicimg{
+#capicimg {
     position: relative;
     width: 100%;
     z-index: 1;
 }
 
-#suppcap{
+#suppcap {
     display: flex;
     position: absolute;
     z-index: 2;
@@ -204,15 +243,12 @@ canvas{
 }
 
 section {
-    border: 1vw solid deeppink;
     grid-area: content;
 }
 
-p{
-    color: red;
-}
-
 footer {
-    border: 1vw solid orange;
+    box-shadow: 0 0 5px 3px #075661;
+    background-color: #075661;
+    border: 1px solid #075661;
     grid-area: footer;
 }

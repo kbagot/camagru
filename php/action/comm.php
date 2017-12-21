@@ -50,7 +50,8 @@ function get_name($name)
 }
 
 if ($_POST && $_POST['img'] && $_POST['comm'] && isset($_SESSION['log'])) {
-    $img = $_POST['img'];
+    $_POST['comm'] = htmlspecialchars($_POST['comm']);
+    $img = htmlspecialchars($_POST['img']);
     $img = str_replace('/', '', $img);
     $img = preg_split('/uploads/', $img);
 //    if (!exist($img[1])) {
