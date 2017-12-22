@@ -7,12 +7,28 @@ if ($_SESSION['log'])
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico"/>
     <title>Index</title>
 </head>
 <body>
 <div class="index">
     <header>
-        <img class="logo" src="uploads/logo/logo.png" alt="">
+        <img class="logo" src="logo/logo.png" onclick="window.location.href='index.php'" alt="">
+        <div class="navbox">
+            <div class="navbtn">
+                <a href="library.php">Galerie</a>
+            </div>
+            <div class="navbtn">
+                <a href="main.php">Montage</a>
+            </div>
+            <div class="navbtn">
+                <a href="userlib.php">Photos</a>
+            </div>
+            <div class="navbtn">
+                <a href="modify_user.php">Compte</a>
+            </div>
+        </div>
+        <img class="logout" src="logo/logout.png" onclick="window.location.href='logout.php'" alt="">
     </header>
     <section>
         <div class="formdiv">

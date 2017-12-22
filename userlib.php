@@ -13,6 +13,7 @@ if (!$_SESSION['log'])
 <body>
 <div class="index">
     <header>
+        <img class="logo" src="uploads/logo/logo.png" alt="">
         <?php if ($_SESSION['log']) { ?>
         <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
         <?php } ?>

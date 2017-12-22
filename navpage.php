@@ -8,11 +8,13 @@
 <body>
 <div class="index">
     <header>
+        <img class="logo" src="uploads/logo/logo.png" alt="">
     </header>
     <section>
         <p> <?=get_flash()?> </p>
     </section>
     <footer>
+        <span class="foot">© Camagru, kbagot.</span>
     </footer>
 </div>
 </body>

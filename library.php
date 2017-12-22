@@ -7,6 +7,7 @@
 <body>
 <div class="index">
     <header>
+        <img class="logo" src="uploads/logo/logo.png" alt="">
         <?php require('connect.php');
         error_reporting(E_ALL);
         ini_set('display_errors', '1');

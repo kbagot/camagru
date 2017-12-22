@@ -14,7 +14,19 @@ if (!$_SESSION['log'])
 <body>
 <div class="main">
     <header>
-        <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
+        <img class="logo" src="logo/logo.png" onclick="window.location.href='index.php'" alt="">
+        <div class="navbox">
+            <div class="navbtn">
+                <a href="library.php">Galerie</a>
+            </div>
+            <div class="navbtn">
+                <a href="userlib.php">Photos</a>
+            </div>
+            <div class="navbtn">
+                <a href="modify_user.php">Compte</a>
+            </div>
+        </div>
+        <img class="logout" src="logo/logout.png" onclick="window.location.href='logout.php'" alt="">
     </header>
     <section>
         <!--<img id="filter">-->

@@ -2,9 +2,6 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0;
-    background-image: url("https://blog.photobox.fr/wp-content/uploads/2017/01/@fuelled.by_.caffeine.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
     /*filter: grayscale(25%);*/
 }
 
@@ -19,6 +16,9 @@ html, body {
     grid-template: 15% 60% 1fr / 1fr 1fr 15%;
     grid-gap: 2vw;
     grid-template-areas: 'header header header' 'content content sidebar' 'footer footer footer';
+    background-image: url("http://decoratorsnotebook.files.wordpress.com/2013/04/dsc_0048.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .index {
@@ -28,17 +28,54 @@ html, body {
     grid-template: 10% 1fr 8% / 1fr 1fr 1fr;
     grid-gap: 2vw;
     grid-template-areas: 'header header header' 'content content content' 'footer footer footer';
+    background-image: url("https://blog.photobox.fr/wp-content/uploads/2017/01/@fuelled.by_.caffeine.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
     box-shadow: 0 0 5px 3px white;
     background-color:  white;
     grid-area: header;
+    font-family: Pacifico;
+    font-size: inherit;
+    display: inline-flex;
 }
 
 .logo{
-    margin-left: 10%;
+    margin-left: 7%;
     max-height: 100%;
+}
+
+.navbox{
+    width: 100%;
+    height: 100%;
+    margin-right: 10%;
+}
+
+.navbtn {
+    float: right;
+    margin-right: 0;
+    display: inline-flex;
+    text-align: center;
+    align-content: center;
+    margin-top: 2%;
+    width: auto;
+    height: 37%;
+    padding: 1%;
+}
+
+.navbtn a{
+    font-size: 3vh;
+    color: #31748e;
+    text-decoration: none;
+}
+
+.logout{
+    margin-top: 1%;
+    width: 5%;
+    position: absolute;
+    right: 0;
 }
 
 section {
@@ -50,9 +87,9 @@ footer {
     box-shadow: 0 0 2px 8px white;
     background-color: white;
     grid-area: footer;
-    padding-top: 3%;
+    padding-top: 2%;
     padding-left:5%;
-    font-size: small;
+    font-size: medium;
     color:grey;
 }
 
@@ -250,15 +287,18 @@ canvas {
 /* FORM LOG/SIGN */
 section form {
     /*background-color: rgba(32, 123, 148, 0.17);*/
-    margin-top: 10%;
+    /*background-color: aliceblue;*/
+    /*position: fixed;*/
 }
 
 .formdiv {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /*width: 20%;*/
+    margin: auto;
+    margin-top: 17%;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 1px 1px white;
+    border-radius: 10px;
 }
 
 section form input {
@@ -269,6 +309,14 @@ section form input {
     border: 1px solid dimgrey;
     margin: 15px;
     width: 230px;
+}
+
+#checkbt{
+    width: 10px;
+}
+
+.error{
+    color: red;
 }
 
 .formbut {
