@@ -2,6 +2,10 @@ html, body {
     width: 100%;
     height: 100%;
     margin: 0;
+    background-image: url("https://blog.photobox.fr/wp-content/uploads/2017/01/@fuelled.by_.caffeine.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*filter: grayscale(25%);*/
 }
 
 * {
@@ -21,9 +25,35 @@ html, body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template: 15% 1fr 10% / 1fr 1fr 1fr;
+    grid-template: 10% 1fr 8% / 1fr 1fr 1fr;
     grid-gap: 2vw;
     grid-template-areas: 'header header header' 'content content content' 'footer footer footer';
+}
+
+header {
+    box-shadow: 0 0 5px 3px white;
+    background-color:  white;
+    grid-area: header;
+}
+
+.logo{
+    margin-left: 10%;
+    max-height: 100%;
+}
+
+section {
+    text-align: center;
+    grid-area: content;
+}
+
+footer {
+    box-shadow: 0 0 2px 8px white;
+    background-color: white;
+    grid-area: footer;
+    padding-top: 3%;
+    padding-left:5%;
+    font-size: small;
+    color:grey;
 }
 
 #mountcontent {
@@ -39,13 +69,6 @@ video {
 canvas {
     position: absolute;
     max-width: 100%;
-}
-
-header {
-    box-shadow: 0 0 5px 3px #075661;
-    background-color: #075661;
-    border: 1px solid #075661;
-    grid-area: header;
 }
 
 #libimgcont {
@@ -224,6 +247,52 @@ header {
     overflow-x: hidden;
 }
 
+/* FORM LOG/SIGN */
+section form {
+    /*background-color: rgba(32, 123, 148, 0.17);*/
+    margin-top: 10%;
+}
+
+.formdiv {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*width: 20%;*/
+}
+
+section form input {
+    text-align: center;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid dimgrey;
+    margin: 15px;
+    width: 230px;
+}
+
+.formbut {
+    background-color: #31748e;
+    color: white;
+}
+
+.formbut:hover {
+    background-color: white;
+    color: black;
+}
+
+.formbut:active {
+    background-color: #31748e;
+    color: white;
+}
+
+section form a {
+    color: black;
+    text-decoration: none;
+}
+
+/***********************/
+
 #capic div {
     position: relative;
 }
@@ -240,15 +309,4 @@ header {
     z-index: 2;
     bottom: 0;
     right: 0;
-}
-
-section {
-    grid-area: content;
-}
-
-footer {
-    box-shadow: 0 0 5px 3px #075661;
-    background-color: #075661;
-    border: 1px solid #075661;
-    grid-area: footer;
 }

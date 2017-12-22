@@ -12,20 +12,21 @@ if ($_SESSION['log'])
 <body>
 <div class="index">
     <header>
+        <img class="logo" src="uploads/logo/logo.png" alt="">
     </header>
     <section>
-        <form action="php/action/register.php" method="POST" autocomplete="on">
-            <h1>Pseudo:</h1>
-            <input type="text" name="u_name" pattern="^[A-Za-z0-9_]{1,15}$" required>
-            <h1>Email</h1>
-            <input type="email" name="mail" required>
-            <h1>Password</h1>
-            <input type="password" name="passwd" pattern="^.{6,}$" required>
-            <input type="submit" name="submit" value="Register"/>
-            <p><?= get_flash() ?></p>
-        </form>
+        <div class="formdiv">
+            <form action="php/action/register.php" method="POST" autocomplete="on">
+                <input type="text" name="u_name" placeholder="Pseudo" pattern="^[A-Za-z0-9_]{1,15}$" required><br>
+                <input type="email" name="mail" placeholder="E-Mail" required><br>
+                <input type="password" name="passwd" placeholder="Mot de Passe" pattern="^.{6,}$" required><br>
+                <p><?= get_flash() ?></p>
+                <input class="formbut" type="submit" name="submit" value="S'Inscrire"/>
+            </form>
+        </div>
     </section>
     <footer>
+        <span class="foot">© Camagru, kbagot.</span>
     </footer>
 </div>
 </body>

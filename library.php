@@ -10,7 +10,7 @@
         <?php require('connect.php');
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
-        if ($_SESSION['log']) { ?>
+        if (isset($_SESSION['log'])) { ?>
             <button class="nav_b" onclick="window.location.href='php/action/logout.php'">LOGOUT</button>
         <?php } ?>
     </header>

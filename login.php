@@ -15,11 +15,9 @@ if ($_SESSION['log'])
     </header>
     <section>
         <form action="php/action/login.php" method="POST" autocomplete="on">
-            <h1>Pseudo:</h1>
-            <input type="text" name="u_name" required>
-            <h1>Password</h1>
-            <input type="password" name="passwd" required>
-            <input type="submit" name="submit" value="log"/>
+            <input type="text" name="u_name" placeholder="Pseudo" required><br>
+            <input type="password" name="passwd" placeholder="Mot de passe" required><br>
+            <input class="formbut" type="submit" name="submit" value="Connection">
             <p><?= get_flash() ?></p>
             <a href="res_passwd.php">Mot de passe oublier</a>
         </form>
