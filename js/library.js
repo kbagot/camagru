@@ -35,6 +35,7 @@ window.onresize = function () {
 };
 
 if (like) {
+    var commbox = document.querySelector('#combox');
     like.addEventListener('click', function () {
         var formData = new FormData();
         formData.append('img', clicimg.src);
@@ -43,6 +44,7 @@ if (like) {
             if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200 && ajax.responseText === 'nolog') {
                 like.style.visibility = 'hidden';
                 comm.style.visibility = 'hidden';
+                commbox.style.visibility = 'hidden';
                 document.querySelector('#nolog').innerHTML = "Connectez-vous";
             }
             like.src = 'logo/liked.png';

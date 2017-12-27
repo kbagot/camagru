@@ -11,20 +11,26 @@ if (!$_SESSION['log']) {
 <html lang="fr">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico">
     <link rel="stylesheet" href="css/index.css">
     <title>Modify User</title>
 </head>
 <body>
 <div class="index">
     <header>
-        <a href="index.php">
-            <img class="logo" src="uploads/logo/logo.png" alt="">
-        </a>
-        <a class="navbtn" href="Library.php">Mur</a>
-        <a class="navbtn" href="main.php">Montage</a>
-        <a class="navbtn" href="userlib.php">Mes Photos</a>
-        <a class="navbtn" href="modify_user.php">Mon Compte</a>
-        <a class="navbtn" href="php/action/logout.php">Deconnecter</a>
+        <img class="logo" src="logo/logo.png" onclick="window.location.href='index.php'" alt="">
+        <div class="navbox">
+            <div class="navbtn">
+                <a href="library.php">Galerie</a>
+            </div>
+            <div class="navbtn">
+                <a href="main.php">Montage</a>
+            </div>
+            <div class="navbtn">
+                <a href="userlib.php">Photos</a>
+            </div>
+        </div>
+        <img class="logout" src="logo/logout.png" onclick="window.location.href='php/action/logout.php'" alt="">
     </header>
     <section>
         <div class="formdiv">

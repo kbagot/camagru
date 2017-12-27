@@ -13,10 +13,10 @@ html, body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template: 15% 60% 1fr / 1fr 1fr 15%;
+    grid-template: 10% 1fr 15% / 1fr 1fr 25%;
     grid-gap: 2vw;
     grid-template-areas: 'header header header' 'content content sidebar' 'footer footer footer';
-    background-image: url("http://decoratorsnotebook.files.wordpress.com/2013/04/dsc_0048.jpg");
+    background-image: url("https://blog.photobox.fr/wp-content/uploads/2017/01/@fuelled.by_.caffeine.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -43,6 +43,7 @@ header {
 }
 
 .logo{
+    cursor: pointer;
     margin-left: 7%;
     max-height: 100%;
 }
@@ -72,6 +73,7 @@ header {
 }
 
 .logout{
+    cursor: pointer;
     margin-top: 1%;
     width: 5%;
     position: absolute;
@@ -87,16 +89,30 @@ footer {
     box-shadow: 0 0 2px 8px white;
     background-color: white;
     grid-area: footer;
-    padding-top: 2%;
-    padding-left:5%;
     font-size: medium;
-    color:grey;
+    color: grey;
+    align-items: center;
+    display: inline-flex;
+}
+
+#imgfilter {
+    max-width: 15%;
+    height: 88%;
+    margin: auto;
+}
+
+.ftitle{
+    font-family: Pacifico;
+    font-size: 3vw;
+    color: #31748e;
 }
 
 #mountcontent {
+    background-color: white;
     text-align: center;
-    /*display: block;*/
-    /*margin: auto;*/
+    margin-left: 2%;
+    padding: 5%;
+    padding-bottom: 15%;
 }
 
 video {
@@ -117,45 +133,43 @@ canvas {
 }
 
 #libimg {
-    position: relative;
-    box-shadow: 0 0 3px 3px black;
+    background-color: white;
+    margin: 0.2%;
+    padding: 1%;
+    padding-bottom: 4%;
     display: inline-flex;
     max-width: 400px;
     max-height: 280px;
-    width: 33.3333333%;
-}
-
-#imgfilter {
-    display: inline-flex;
-    width: 10%;
-    height: auto;
+    width: 32%;
 }
 
 .pagination {
     height: 100%;
     width: 100%;
-    bottom: 0;
+    justify-content: center;
     text-align: center;
+    align-items: center;
+    display: inline-flex;
 }
 
 .pagination a {
-    margin-top: 3vh;
-    display: inline-flex;
+    font-family: Pacifico;
     background-color: white;
-    font-size: 2vw;
+    font-size: 1.8vw;
+    min-width: 3%;
     color: black;
-    border: 1px solid black;
-    padding: 1%;
+    border: 2px solid black;
     text-decoration: none;
 }
 
 .pagination a:hover {
-    background-color: #075661;
+    color: white;
+    background-color: #31748e;
 }
 
 .pagination a.active {
     color: white;
-    background-color: #075661;
+    background-color: #31748e;
 }
 
 #filter {
@@ -170,98 +184,17 @@ canvas {
     visibility: hidden;
 }
 
-#close {
-    position: absolute;
-    margin: 2%;
-    top: 0;
-    right: 0;
-    border-width: 3px;
-    border-color: #2B8080;
-    height: 6%;
-    width: 6%;
-}
-
-#close:hover {
-    background-color: #2B8080;
-    color: white;
-}
-
-#close:before {
-    /*font-size: 5;*/
-    content: '\00D7';
-}
-
-#like, #delimg {
-    width: 5%;
-    position: absolute;
-    bottom: 6%;
-    right: 2%;
-}
-
-#combox {
-    border-width: 3px;
-    border-radius: 3px;
-    border-color: darkgrey;
-    border-style: solid;
-    height: 10%;
-    width: 23%;
-    resize: none;
-    right: 9%;
-    bottom: 6%;
-    position: absolute;
-}
-
-#comm {
-    border-width: 3px;
-    height: 3%;
-    width: 8%;
-    right: 24%;
-    bottom: 2%;
-    position: absolute;
-}
-
-#comm:hover {
-    background-color: #2B8080;
-    color: white;
-}
-
+/********************/
+/*   IMG OVERLAY    */
+/********************/
 #displayimg {
-    /*right*/
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     position: fixed;
     visibility: hidden;
-    background-color: rgba(25, 10, 22, 0.5);
-    /*width: 100%;*/
-    /*height: 100%;*/
-}
-
-#showcomm {
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 75%;
-    margin: 2%;
-    position: absolute;
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-#commtext {
-    display: block;
-    margin: 1%;
-    word-wrap: break-word;
-}
-
-#showimg {
-    top: 0;
-    left: 0;
-    width: 65%;
-    height: 75%;
-    margin: 2%;
-    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 #content {
@@ -275,12 +208,98 @@ canvas {
     position: fixed;
 }
 
+#showimg {
+    top: 0;
+    left: 0;
+    width: 65%;
+    height: 75%;
+    margin: 2%;
+    position: absolute;
+}
+
+#showcomm {
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 75%;
+    margin: 2%;
+    position: absolute;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#like, #delimg {
+    width: 5%;
+    position: absolute;
+    bottom: 6%;
+    right: 2%;
+}
+
+#combox {
+    font-size: 1.3vmax;
+    border-width: 3px;
+    border-radius: 3px;
+    border-color: darkgrey;
+    border-style: solid;
+    height: 10%;
+    width: 23%;
+    resize: none;
+    right: 9%;
+    bottom: 6%;
+    position: absolute;
+}
+
+#comm {
+    height: 3%;
+    width: 8%;
+    min-width: 50px;
+    right: 24%;
+    bottom: 2%;
+    font-size: 1.3vmax;
+    position: absolute;
+    background-color: #31748e;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid dimgrey;
+}
+
+#comm:hover {
+    background-color: white;
+    color: black;
+}
+
+#comm:active {
+    background-color: #31748e;
+    color: white;
+}
+
+#close {
+    background-color: #31748e;
+    border-radius: 10px;
+    margin: 2%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: black;
+}
+
+#close:hover {
+    box-shadow: 0 0 1px 3px white;
+}
+
+#close:before {
+    color: white;
+    font-size: 7vmax;
+    content: '\00D7';
+}
+/*************************/
+/*************************/
+
+
 #capic {
-    border: 1vw solid rebeccapurple;
     grid-area: sidebar;
     position: relative;
-    overflow: scroll;
-    z-index: 1;
+    overflow: auto;
     overflow-x: hidden;
 }
 
@@ -297,7 +316,8 @@ section form {
     width: 300px;
     padding: 20px;
     background-color: white;
-    box-shadow: 0 0 1px 1px white;
+    box-shadow: 0 0 1px 3px #31748e;
+    /*box-shadow: 0 0 1px 1px white;*/
     border-radius: 10px;
 }
 
@@ -342,19 +362,29 @@ section form a {
 /***********************/
 
 #capic div {
+    padding: 6%;
+    padding-bottom: 15%;
+    background-color: white;
     position: relative;
+    text-align: center;
+    margin-bottom: 1%;
 }
 
 #capicimg {
-    position: relative;
+
     width: 100%;
     z-index: 1;
 }
 
-#suppcap {
-    display: flex;
-    position: absolute;
-    z-index: 2;
-    bottom: 0;
-    right: 0;
+.navmsg{
+    font-family: sans-serif;
+    font-size: large;
+    margin: auto;
+    margin-top: 17%;
+    width: 300px;
+    padding: 12px;
+    background-color: white;
+    box-shadow: 0 0 1px 3px #31748e;
+    border-radius: 10px;
+    color: #31748e;
 }

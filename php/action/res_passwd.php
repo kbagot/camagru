@@ -14,9 +14,10 @@ function if_validmail($mail)
     return 'OK';
 }
 
-if ($_GET && $_GET['hash'] && $val = valid_hash($_GET['hash'], $_POST['passwd']))
-    header("Location: ../../login.php");
-else if ($_POST && $_POST['mail'] && $_POST['submit'] && ($error = if_validmail($_POST['mail'])) == 'OK') {
+if ($_GET && $_GET['hash'] && $val = valid_hash($_GET['hash'], $_POST['passwd'])) {
+    post_flash("MOT DE PASSE MODIFIER");
+    header("Location: ../../navpage.php");
+} else if ($_POST && $_POST['mail'] && $_POST['submit'] && ($error = if_validmail($_POST['mail'])) == 'OK') {
     $query = $DB->prepare("UPDATE `users` SET vhash=? WHERE email=?");
     $query->execute(array(($random_hash = md5(uniqid(rand(), true))), $_POST['mail']));
     $headers = 'MIME-Version: 1.0' . "\r\n";
@@ -30,7 +31,8 @@ class="button" href="http://localhost:8080/hello/camagru/res_passwd.php?hash=' .
       </body>
      </html>
      ', $headers);
-    header("Location: ../../login.php");
+    post_flash("E-Mail Envoyer");
+    header("Location: ../../navpage.php");
 } else {
     if ($error)
         post_flash($error);
