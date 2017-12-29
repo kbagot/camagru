@@ -65,10 +65,10 @@ if (!$_SESSION['log'])
         <div id="showcomm">
         </div>
         <form action="" onsubmit="sendCom(event)">
-            <textarea autofocus name="comm" id="combox" maxlength="255">Commentaire ...</textarea>
+            <textarea autofocus name="comm" id="combox" placeholder="Commentaire ..." maxlength="255"></textarea>
             <img id="delimg" src="logo/delete.png">
             <button id="comm" type="submit">Publier</button>
-            <a id="nolog" href="login.php"></a>
+            <a id="nolog" href="login.php"></a> // some css
         </form>
     </div>
     <button id="close"></button>

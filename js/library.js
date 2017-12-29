@@ -8,6 +8,7 @@ var libimg = document.querySelectorAll('#libimg'),
 
 close.addEventListener('click', function () {
     displayimg.style.visibility = 'hidden';
+    like.src = 'logo/like.png';
 }, false);
 
 
@@ -82,7 +83,7 @@ function display_comm(img) {
     ajax.onreadystatechange = function () {
         if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
             if (ajax.responseText === 'nocomm') {
-                document.querySelector('#showcomm').innerHTML = "Pas de Comentaires";
+                document.querySelector('#showcomm').innerHTML = "Pas de Commentaires";
             }
             else {
                 var res = JSON.parse(ajax.responseText);
@@ -97,16 +98,38 @@ function display_comm(img) {
         var out = "";
         var i;
         for (i = 0; i < res.length; i++) {
-            out += '</h1><span id="commtext"><strong>' + res[i]['u_name'] + ' </strong>' + res[i]['comm'] + '</span>';
+            out += '<span id="commtext"><strong>' + res[i]['u_name'] + ' </strong>' + res[i]['comm'] + '</span></br>';
         }
         document.getElementById("showcomm").innerHTML = out;
     }
 }
 
+function isliked(img) {
+    var formData = new FormData();
+    formData.append('img', img);
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+            if (ajax.responseText === 'liked') {
+                like.src = 'logo/liked.png';
+                // document.querySelector('#showcomm').innerHTML = "Pas de Commentaires";
+            }
+            else {
+                // var res = JSON.parse(ajax.responseText);
+                // display(res);
+            }
+        }
+    };
+    ajax.open("POST", "php/action/load_like.php", true);
+    ajax.send(formData);
+}
+
+
 for (var i = 0; i < libimg.length; i++) {
     libimg[i].addEventListener('click', function (ev) {
         displayimg.style.visibility = 'visible';
         display_comm(ev.target.src);
+        isliked(ev.target.src);
         clicimg.src = ev.target.src;
     }, false);
 }
@@ -123,7 +146,7 @@ function sendCom(e) {
             like.style.visibility = 'invisible';
             var comm = document.querySelector('#comm');
             comm.style.visibility = 'invisible';
-            document.querySelector('#nolog').innerHTML = "You should be log to perform this action";
+            document.querySelector('#nolog').innerHTML = "Vous devez etre connecter";
         }
         console.log(ajax.responseText);
         display_comm(document.getElementById('showimg').src);

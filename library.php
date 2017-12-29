@@ -62,7 +62,7 @@
         <div id="showcomm">
         </div>
         <form action="" onsubmit="sendCom(event)">
-            <textarea autofocus name="comm" id="combox" maxlength="255">Commentaire ...</textarea>
+            <textarea autofocus name="comm" id="combox" placeholder="Commentaire ..." maxlength="255"></textarea>
             <a id="nolog" href="login.php"></a>
             <img id="like" src="logo/like.png">
             <button id="comm" type="submit">Publier</button>

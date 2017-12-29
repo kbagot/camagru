@@ -9,6 +9,7 @@
         suppcap = document.querySelectorAll('#suppcap'),
         filter = new Image(),
         fileinput = document.querySelector('#file'),
+        filebutton = document.querySelector('.file'),
         width = video.getBoundingClientRect().right / 3,
         height = 0;
 
@@ -48,7 +49,7 @@
     function takepicture(base) {
         console.log(base);
         startbutton.style.visibility = 'hidden';
-        fileinput.style.visibility = 'hidden';
+        filebutton.style.visibility = 'hidden';
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
         canvas.getContext('2d').drawImage(base, 0, 0, canvas.width, canvas.height);
         var data = canvas.toDataURL('image/png');
@@ -119,7 +120,7 @@
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
         canvas.getContext('2d').drawImage(filter, (canvas.width / 2) - (filter.width / 2), -10, filter.width, filter.height);
         startbutton.style.visibility = 'visible';
-        fileinput.style.visibility = 'visible';
+        filebutton.style.visibility = 'visible';
     }
 
     for (var i = 0; i < imgfilter.length; i++) {

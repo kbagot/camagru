@@ -35,7 +35,8 @@ if (!$_SESSION['log'])
             <canvas id="canvas"></canvas>
             <video id="video"></video>
         </div>
-        <button id="startbutton">Upload</button>
+        <button id="startbutton">Capturer</button>
+        <label for="file" class="file">Upload</label>
         <input id="file" type="file" accept="image/*"/>
     </section>
     <div id="capic">
