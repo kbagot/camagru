@@ -13,5 +13,5 @@ if ($_POST && $_POST['img'] && $_SESSION['log']) {
     if (isset($res[0]['userid']))
         echo 'liked';
     else
-        echo 'nocomm';
+        echo 'error';
 }

@@ -18,6 +18,9 @@ if ($_SESSION['log'])
             <div class="navbtn">
                 <a href="library.php">Galerie</a>
             </div>
+            <div class="navbtn">
+                <a href="index.php">S'inscrire</a>
+            </div>
         </div>
     </header>
     <section>
@@ -27,7 +30,7 @@ if ($_SESSION['log'])
                 <input type="password" name="passwd" placeholder="Mot de passe" required><br>
                 <input class="formbut" type="submit" name="submit" value="Connection">
                 <p class="error"><?= get_flash() ?></p>
-                <a href="res_passwd.php">Mot de passe oublier</a>
+                <a href="res_passwd.php">Mot de passe oublier ?</a>
             </form>
         </div>
     </section>

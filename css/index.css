@@ -95,6 +95,10 @@ footer {
     display: inline-flex;
 }
 
+.foot{
+    margin: 2%;
+}
+
 #imgfilter {
     max-width: 15%;
     height: 88%;
@@ -125,7 +129,7 @@ canvas {
 }
 
 #libimgcont {
-    max-width: 1599px;
+    /*max-width: 1599px;*/
     width: 100%;
     /*width: 100%;*/
     text-align: center;
@@ -138,8 +142,7 @@ canvas {
     padding: 1%;
     padding-bottom: 4%;
     display: inline-flex;
-    max-width: 400px;
-    max-height: 280px;
+    max-width: 380px;
     width: 32%;
 }
 
@@ -244,17 +247,21 @@ input[type="file"] {
     left: 0;
     position: fixed;
     visibility: hidden;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #content {
-    background-color: white;
-    top: 25%;
-    bottom: auto;
+    display: flex;
+    top: 0;
     right: 0;
     left: 0;
+    margin: auto;
+    background-color: white;
+    top: 24%;
+    max-width: 1460px;
     width: 100%;
-    height: 65%;
+    min-height: 25%;
+    /*height: 65%;*/
     position: fixed;
 }
 
@@ -262,24 +269,23 @@ input[type="file"] {
     top: 0;
     left: 0;
     width: 65%;
-    height: 75%;
-    margin: 2%;
-    position: absolute;
-    box-shadow: 0 0 2px 5px rgba(49, 116, 142, 0.8);
+    max-width: 950px;
+    height: 100%;
+    /*position: absolute;*/
+    /*box-shadow: 0 0 2px 5px rgba(49, 116, 142, 0.8);*/
 }
 
 #showcomm {
     font-family: Arial;
-    font-size: medium;
+    font-size: 1.3vmax;
     /*background-color: rgba(49, 116, 142, 0.8);*/
-    box-shadow: 0 0 2px 5px rgba(49, 116, 142, 0.8);
-    padding: 1.5%;
+    /*box-shadow: 0 0 1px 3px rgba(49, 116, 142, 0.8);*/
     word-wrap: break-word;
+    padding-top: 1.5%;
     top: 0;
+    left: 67%;
     right: 0;
-    width: 30%;
-    height: 75%;
-    margin: 2%;
+    height: 65%;
     position: absolute;
     overflow: auto;
     overflow-x: hidden;
@@ -288,28 +294,28 @@ input[type="file"] {
 #like, #delimg {
     width: 5%;
     position: absolute;
-    bottom: 6%;
+    bottom: 16%;
     right: 2%;
 }
 
 #combox {
     font-size: 1.3vmax;
     border: none;
-    box-shadow: 0 0 2px 5px rgba(49, 116, 142, 0.8);
+    box-shadow: 0 0 1px 2px rgba(49, 116, 142, 0.8);
     height: 10%;
     width: 23%;
     resize: none;
-    right: 9%;
-    bottom: 6%;
+    left: 67%;
+    bottom: 16%;
     position: absolute;
 }
 
 #comm {
-    height: 3%;
     width: 8%;
+    height: 10%;
     min-width: 50px;
-    right: 24%;
-    bottom: 2%;
+    left: 67%;
+    bottom: 4%;
     font-size: 1.3vmax;
     position: absolute;
     background-color: #31748e;
@@ -346,6 +352,22 @@ input[type="file"] {
     color: white;
     font-size: 7vmax;
     content: '\00D7';
+}
+
+#nolog {
+    font-family: Arial;
+    visibility: hidden;
+    text-decoration: none;
+    position: absolute;
+    padding: 1%;
+    min-width: 50px;
+    right: 11%;
+    bottom: 7%;
+    font-size: 1.3vmax;
+    background-color: #31748e;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #31748e;
 }
 
 /*************************/

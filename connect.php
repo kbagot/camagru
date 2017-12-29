@@ -68,7 +68,8 @@ function if_valid($name, $email, $passwd, $DB) //for registration and update pro
     $query = $DB->prepare("SELECT email FROM `users` WHERE email=?");
     $query->execute(array($email));
     $errormail = $query->fetch();
-    if (!preg_match("/^[A-Za-z0-9_]{1,15}$/", $name) || !filter_var($email, FILTER_VALIDATE_EMAIL) || ($passwd && !preg_match('/^.{6,}$/', $passwd)))
+    if (($name && !preg_match("/^[A-Za-z0-9_]{1,15}$/", $name)) || ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) ||
+        ($passwd && !preg_match("/^.{6,}$/", $passwd)))
         return "Incorrect input";
     if ($errorname && $errormail)
         return ("Nom d'utilisateur et Adresse email deja utiliser");

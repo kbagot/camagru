@@ -4,10 +4,12 @@ var libimg = document.querySelectorAll('#libimg'),
     like = document.querySelector('#like'),
     comm = document.querySelector('#comm'),
     delimg = document.querySelector('#delimg'),
+    nolog = document.querySelector('#nolog'),
     clicimg = document.getElementById('showimg');
 
 close.addEventListener('click', function () {
     displayimg.style.visibility = 'hidden';
+    nolog.style.visibility = 'hidden';
     like.src = 'logo/like.png';
 }, false);
 
@@ -46,7 +48,8 @@ if (like) {
                 like.style.visibility = 'hidden';
                 comm.style.visibility = 'hidden';
                 commbox.style.visibility = 'hidden';
-                document.querySelector('#nolog').innerHTML = "Connectez-vous";
+                nolog.style.visibility = 'visible';
+                nolog.innerHTML = "Connectez-vous";
             }
             like.src = 'logo/liked.png';
             // console.log(ajax.responseText);
@@ -110,20 +113,14 @@ function isliked(img) {
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {
         if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
-            if (ajax.responseText === 'liked') {
+            if (like && ajax.responseText === 'liked') {
                 like.src = 'logo/liked.png';
-                // document.querySelector('#showcomm').innerHTML = "Pas de Commentaires";
-            }
-            else {
-                // var res = JSON.parse(ajax.responseText);
-                // display(res);
             }
         }
     };
     ajax.open("POST", "php/action/load_like.php", true);
     ajax.send(formData);
 }
-
 
 for (var i = 0; i < libimg.length; i++) {
     libimg[i].addEventListener('click', function (ev) {
@@ -142,11 +139,11 @@ function sendCom(e) {
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {
         if (ajax.responseText === 'nolog') {
-            var like = document.querySelector('#like');
-            like.style.visibility = 'invisible';
-            var comm = document.querySelector('#comm');
-            comm.style.visibility = 'invisible';
-            document.querySelector('#nolog').innerHTML = "Vous devez etre connecter";
+            like.style.visibility = 'hidden';
+            comm.style.visibility = 'hidden';
+            commbox.style.visibility = 'hidden';
+            nolog.style.visibility = 'visible';
+            nolog.innerHTML = "Connectez-vous";
         }
         console.log(ajax.responseText);
         display_comm(document.getElementById('showimg').src);

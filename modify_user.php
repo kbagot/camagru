@@ -35,12 +35,11 @@ if (!$_SESSION['log']) {
     <section>
         <div class="formdiv">
             <form action="php/action/modify_user.php" method="POST" autocomplete="on">
-                <input type="text" name="u_name" value="<?= $u_data['u_name'] ?>" placeholder="Pseudo"
-                       pattern="^[A-Za-z0-9_]{1,15}$" required><br>
-                <input type="email" value="<?= $u_data['email'] ?>" placeholder="E-Mail" name="mail" required><br>
+                <input type="text" name="u_name" placeholder="<?= $u_data['u_name'] ?>"
+                       pattern="^[A-Za-z0-9_]{1,15}$"><br>
+                <input type="email" placeholder="<?= $u_data['email'] ?>" name="mail"><br>
                 <input type="password" name="passwd" placeholder="Mot de passe" pattern="^.{6,}$"><br>
-                E-Mail Notifications:<input id="checkbt" type="checkbox" name="notif" <?= $u_data['notif'] ?>
-                                            value="checked"><br>
+                <span>E-Mail Notifications:</span><input id="checkbt" type="checkbox" name="notif" <?= $u_data['notif'] ?> value="checked"><br>
                 <p class="error"><?= get_flash() ?></p>
                 <input class="formbut" type="submit" name="submit" value="Modifier"/>
             </form>

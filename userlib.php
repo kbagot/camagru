@@ -68,7 +68,7 @@ if (!$_SESSION['log'])
             <textarea autofocus name="comm" id="combox" placeholder="Commentaire ..." maxlength="255"></textarea>
             <img id="delimg" src="logo/delete.png">
             <button id="comm" type="submit">Publier</button>
-            <a id="nolog" href="login.php"></a> // some css
+            <a id="nolog" href="login.php">Login</a>
         </form>
     </div>
     <button id="close"></button>

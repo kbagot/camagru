@@ -9,11 +9,11 @@
 <div class="index">
     <header>
         <img class="logo" src="logo/logo.png" onclick="window.location.href='index.php'" alt="">
+        <div class="navbox">
         <?php require('connect.php');
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
         if (isset($_SESSION['log'])) { ?>
-            <div class="navbox">
                 <div class="navbtn">
                     <a href="userlib.php">Photos</a>
                 </div>
@@ -23,9 +23,13 @@
                 <div class="navbtn">
                     <a href="modify_user.php">Compte</a>
                 </div>
-            </div>
             <img class="logout" src="logo/logout.png" onclick="window.location.href='php/action/logout.php'" alt="">
-        <?php } ?>
+        <?php } else {?>
+            <div class="navbtn">
+                <a href="login.php">Connexion</a>
+            </div>
+        <?php }?>
+</div>
 </header>
 <section>
     <div id="libimgcont">

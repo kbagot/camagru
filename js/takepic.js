@@ -6,7 +6,6 @@
         photo = document.querySelector('#photo'),
         startbutton = document.querySelector('#startbutton'),
         imgfilter = document.querySelectorAll('#imgfilter'),
-        suppcap = document.querySelectorAll('#suppcap'),
         filter = new Image(),
         fileinput = document.querySelector('#file'),
         filebutton = document.querySelector('.file'),
@@ -62,7 +61,7 @@
             if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
                 var base = document.getElementById("capic").innerHTML;
                 document.getElementById("capic").innerHTML = "<div><img id=\"capicimg\" src=\"" + ajax.responseText +
-                    "\"><button id=\"suppcap\">supp</button></div>" + base;
+                    "\"></div>" + base;
             }
         };
         ajax.open("POST", "php/action/upload.php", true);
