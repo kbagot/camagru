@@ -1,4 +1,5 @@
 <?php require('connect.php'); ?>
+<?php header( "Refresh:2; url=index.php", true, 303);?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,4 +21,3 @@
 </div>
 </body>
 </html>
-<?php header( "Refresh:2; url=index.php", true, 303);?>

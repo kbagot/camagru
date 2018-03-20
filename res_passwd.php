@@ -21,7 +21,7 @@ if ($_SESSION['log'])
     </header>
     <section>
         <div class="formdiv">
-            <form action="php/action/res_passwd.php?hash=<?= $_GET['hash'] ?>" method="POST" autocomplete="on">
+            <form action="action/res_passwd.php?hash=<?= $_GET['hash'] ?>" method="POST" autocomplete="on">
                 <?php if ($_GET['hash']) { ?>
                     <input type="password" name="passwd" placeholder="Nouveau Mot de passe" pattern="^.{6,}$" required>
                 <?php } else { ?>

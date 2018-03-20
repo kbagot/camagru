@@ -1,3 +1,4 @@
+<?php require('connect.php');?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +11,7 @@
     <header>
         <img class="logo" src="logo/logo.png" onclick="window.location.href='index.php'" alt="">
         <div class="navbox">
-        <?php require('connect.php');
+        <?php
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
         if (isset($_SESSION['log'])) { ?>
@@ -23,7 +24,7 @@
                 <div class="navbtn">
                     <a href="modify_user.php">Compte</a>
                 </div>
-            <img class="logout" src="logo/logout.png" onclick="window.location.href='php/action/logout.php'" alt="">
+            <img class="logout" src="logo/logout.png" onclick="window.location.href='action/logout.php'" alt="">
         <?php } else {?>
             <div class="navbtn">
                 <a href="login.php">Connexion</a>
@@ -66,7 +67,7 @@
         <div id="showcomm">
         </div>
         <form action="" onsubmit="sendCom(event)">
-            <textarea autofocus name="comm" id="combox" placeholder="Commentaire ..." maxlength="255"></textarea>
+            <textarea autofocus name="comm" id="combox" placeholder="Commentaire ..." maxlength="200"></textarea>
             <a id="nolog" href="login.php"></a>
             <img id="like" src="logo/like.png">
             <button id="comm" type="submit">Publier</button>

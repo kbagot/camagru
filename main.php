@@ -1,7 +1,8 @@
 <?php
 require "connect.php"; //database conection
 error_reporting(E_ALL);
-ini_set('display_errors', '1');
+ini_set('display_errors', '1')
+;
 if (!$_SESSION['log'])
     header("Location: index.php");
 ?>
@@ -27,7 +28,7 @@ if (!$_SESSION['log'])
                 <a href="modify_user.php">Compte</a>
             </div>
         </div>
-        <img class="logout" src="logo/logout.png" onclick="window.location.href='php/action/logout.php'" alt="">
+        <img class="logout" src="logo/logout.png" onclick="window.location.href='action/logout.php'" alt="">
     </header>
     <section>
         <!--<img id="filter">-->

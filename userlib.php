@@ -26,7 +26,7 @@ if (!$_SESSION['log'])
                     <a href="modify_user.php">Compte</a>
                 </div>
             </div>
-            <img class="logout" src="logo/logout.png" onclick="window.location.href='php/action/logout.php'" alt="">
+            <img class="logout" src="logo/logout.png" onclick="window.location.href='action/logout.php'" alt="">
     </header>
     <section>
         <div id="libimgcont">

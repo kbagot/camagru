@@ -30,15 +30,15 @@ if (!$_SESSION['log']) {
                 <a href="userlib.php">Photos</a>
             </div>
         </div>
-        <img class="logout" src="logo/logout.png" onclick="window.location.href='php/action/logout.php'" alt="">
+        <img class="logout" src="logo/logout.png" onclick="window.location.href='action/logout.php'" alt="">
     </header>
     <section>
         <div class="formdiv">
-            <form action="php/action/modify_user.php" method="POST" autocomplete="on">
+            <form action="action/modify_user.php" method="POST" autocomplete="on">
                 <input type="text" name="u_name" placeholder="<?= $u_data['u_name'] ?>"
                        pattern="^[A-Za-z0-9_]{1,15}$"><br>
                 <input type="email" placeholder="<?= $u_data['email'] ?>" name="mail"><br>
-                <input type="password" name="passwd" placeholder="Mot de passe" pattern="^.{6,}$"><br>
+                <input type="password" name="passwd" placeholder="Mot de passe" pattern="^(?=.*\d).{4,12}$" title="De 4 a 12 characteres contenant des chiffres"><br>
                 <span>E-Mail Notifications:</span><input id="checkbt" type="checkbox" name="notif" <?= $u_data['notif'] ?> value="checked"><br>
                 <p class="error"><?= get_flash() ?></p>
                 <input class="formbut" type="submit" name="submit" value="Modifier"/>

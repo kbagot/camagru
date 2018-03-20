@@ -25,10 +25,11 @@ if ($_SESSION['log'])
     </header>
     <section>
         <div class="formdiv">
-            <form action="php/action/register.php" method="POST" autocomplete="on">
+            <form action="action/register.php" method="POST" autocomplete="on">
                 <input type="text" name="u_name" placeholder="Pseudo" pattern="^[A-Za-z0-9_]{1,15}$" required><br>
                 <input type="email" name="mail" placeholder="E-Mail" required><br>
-                <input type="password" name="passwd" placeholder="Mot de Passe" pattern="^.{6,}$" required><br>
+                <input type="password" name="passwd" placeholder="Mot de Passe"
+                       pattern="^(?=.*\d).{4,12}$" title="De 4 a 12 characteres contenant des chiffres" required><br>
                 <p class="error"><?= get_flash() ?></p>
                 <input class="formbut" type="submit" name="submit" value="S'Inscrire"/>
             </form>

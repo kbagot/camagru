@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "php/config/database.php";
+require "config/database.php";
 try {
     $DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -69,7 +69,7 @@ function if_valid($name, $email, $passwd, $DB) //for registration and update pro
     $query->execute(array($email));
     $errormail = $query->fetch();
     if (($name && !preg_match("/^[A-Za-z0-9_]{1,15}$/", $name)) || ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) ||
-        ($passwd && !preg_match("/^.{6,}$/", $passwd)))
+        ($passwd && !preg_match("/^(?=.*\d).{4,12}$/", $passwd)))
         return "Incorrect input";
     if ($errorname && $errormail)
         return ("Nom d'utilisateur et Adresse email deja utiliser");

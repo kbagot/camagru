@@ -54,7 +54,7 @@ if (like) {
             like.src = 'logo/liked.png';
             // console.log(ajax.responseText);
         };
-        ajax.open("POST", "php/action/like.php", true);
+        ajax.open("POST", "action/like.php", true);
         ajax.send(formData);
     }, false);
 }
@@ -73,7 +73,7 @@ if (delimg) {
                 }
                 // console.log(ajax.responseText);
             };
-            ajax.open("POST", "php/action/delimg.php", true);
+            ajax.open("POST", "action/delimg.php", true);
             ajax.send(formData);
         }, false
     );
@@ -94,7 +94,7 @@ function display_comm(img) {
             }
         }
     };
-    ajax.open("POST", "php/action/load_comm.php", true);
+    ajax.open("POST", "action/load_comm.php", true);
     ajax.send(formData);
 
     function display(res) {
@@ -118,7 +118,7 @@ function isliked(img) {
             }
         }
     };
-    ajax.open("POST", "php/action/load_like.php", true);
+    ajax.open("POST", "action/load_like.php", true);
     ajax.send(formData);
 }
 
@@ -148,7 +148,7 @@ function sendCom(e) {
         console.log(ajax.responseText);
         display_comm(document.getElementById('showimg').src);
     };
-    ajax.open("POST", "php/action/comm.php", true);
+    ajax.open("POST", "action/comm.php", true);
     ajax.send(formData);
 }
 
