@@ -37,7 +37,7 @@ function valid_hash($hash, $passwd) {
         post_flash("Lien de validation invalide");
         return false;
     }
-    if ($passwd) {
+    if ($passwd && !preg_match("/^(?=.*\d).{4,12}$/", $passwd)) {
         $query = $DB->prepare("UPDATE `users` SET vhash = NULL, passwd=? WHERE vhash=?");
         $query->execute(array(password_hash($passwd, PASSWORD_BCRYPT), $hash));
     } else {

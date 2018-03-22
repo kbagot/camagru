@@ -23,7 +23,8 @@ if (isset($_SESSION['log']))
         <div class="formdiv">
             <form action="action/res_passwd.php?hash=<?= $_GET['hash'] ?>" method="POST" autocomplete="on">
                 <?php if ($_GET['hash']) { ?>
-                    <input type="password" name="passwd" placeholder="Nouveau Mot de passe" pattern="^.{6,}$" required>
+                    <input type="password" name="passwd" placeholder="Nouveau Mot de Passe"
+                           pattern="^(?=.*\d).{4,12}$" title="De 4 a 12 characteres contenant des chiffres" required>
                 <?php } else { ?>
                     <input type="email"  placeholder="E-Mail" name="mail" required>
                 <?php } ?>
