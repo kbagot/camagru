@@ -134,7 +134,8 @@ for (var i = 0; i < libimg.length; i++) {
 function sendCom(e) {
     e.preventDefault();
     var formData = new FormData();
-    formData.append('comm', e.srcElement[0].value);
+    // formData.append('comm', e.srcElement[0].value);
+    formData.append('comm', document.getElementById("combox").value);
     formData.append('img', document.getElementById('showimg').src);
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {
