@@ -1,5 +1,5 @@
 <?php require('connect.php');
-if ($_SESSION['log'])
+if (isset($_SESSION['log']))
     header("Location: index.php");
 ?>
 <!DOCTYPE html>
